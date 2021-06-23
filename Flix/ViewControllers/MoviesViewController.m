@@ -48,14 +48,13 @@
            if (error != nil) {
                NSLog(@"%@", [error localizedDescription]);
                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot get movies"
-                                                                                                                         message:@"There seems to be no internet connection"
+                                                                              message:@"There seems to be no internet connection"
                                                                                                                   preferredStyle:(UIAlertControllerStyleAlert)];
                UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"
-                                                                  style:UIAlertActionStyleDefault
-                                                                handler:^(UIAlertAction * _Nonnull action) {
+                                                style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction * _Nonnull action) {
                    [self fetchMovies];
-
-                                                                }];
+                }];
                [alert addAction:tryAgainAction];
                
                [self presentViewController:alert animated:YES completion:^{
