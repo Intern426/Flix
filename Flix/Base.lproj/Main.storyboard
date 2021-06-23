@@ -21,6 +21,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="Lqj-io-BbJ">
+                                    <rect key="frame" x="0.0" y="296.00000034679067" width="414" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="color" systemColor="labelColor"/>
+                                </activityIndicatorView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="247" id="OZi-uh-CKl" customClass="MovieCell">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="247"/>
@@ -65,6 +70,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="YMF-e8-GdI"/>
                     <connections>
+                        <outlet property="loadingActivityView" destination="Lqj-io-BbJ" id="Il9-qk-0FQ"/>
                         <outlet property="tableView" destination="8SQ-7t-8T8" id="kkR-ns-lin"/>
                     </connections>
                 </viewController>
@@ -149,6 +155,9 @@
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

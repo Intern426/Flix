@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingActivityView;
 @end
 
 @implementation MoviesViewController
@@ -38,6 +39,7 @@
 
 -(void)fetchMovies {
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
+    [self.loadingActivityView startAnimating];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -48,7 +50,7 @@
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 
                NSLog(@"%@", dataDictionary);
-               
+               [NSThread sleepForTimeInterval:5];
                self.movies = dataDictionary[@"results"];
                for (NSDictionary *movie in self.movies) {
                    NSLog(@"%@", movie[@"title"]);
@@ -56,6 +58,7 @@
                
                [self.tableView reloadData];
            }
+        [self.loadingActivityView stopAnimating];
         [self.refreshControl endRefreshing];
        }];
     [task resume];
