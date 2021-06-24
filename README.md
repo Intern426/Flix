@@ -2,7 +2,7 @@
 
 Flix is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
+Time spent: **10** hours spent in total
 
 ## User Stories
 
@@ -18,7 +18,7 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 
-- [ ] User can tap a poster in the collection view to see a detail screen of that movie
+- [x] User can tap a poster in the collection view to see a detail screen of that movie
 - [ ] User can search for a movie.
 - [ ] All images fade in as they are loading.
 - [ ] User can view the large movie poster by tapping on a cell.
@@ -27,7 +27,7 @@ The following **optional** features are implemented:
 - [ ] Customize the navigation bar.
 - [ ] Customize the UI.
 - [ ] User can view the app on various device sizes and orientations.
-- [ ] Run your app on a real device.
+- [x] Run your app on a real device.
 
 The following **additional** features are implemented:
 
@@ -35,14 +35,20 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. Understanding how delegates work
-2.
+1. When we were making out table views, I wasn't entirely sure what the purpose of the delegates was
+2. Would layouts have been better a way of designing the Collection View instead of just adjusting the values in the ViewController class? 
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
+![](https://i.imgur.com/KHu26S2.gif)
+
+
+
+
 
 GIF created with [Kap](https://getkap.co/).
 
@@ -50,7 +56,9 @@ GIF created with [Kap](https://getkap.co/).
 
 Describe any challenges encountered while building the app.
 
-Resizing the image was a challenge because certain images were too big and kept getting cropped off
+Resizing the image was a challenge because certain images were too big and kept getting cropped off.
+
+ I accidently created the wrong outlet or  forgot to connect the outlets a couple times, causing bugs that weren't always obvious until you run the app or the error message didn't make much sense since it doesn't necessarily tell you that the outlet is mismatched. 
 
 ## Credits
 
