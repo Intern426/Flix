@@ -155,7 +155,7 @@
         <scene sceneID="bh0-pC-emv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Ja-pe-j6L" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now Playing" id="zbV-t2-ttz"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="now_playing_tabbar_item" id="zbV-t2-ttz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eCU-8X-oTT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -191,48 +191,41 @@
         <scene sceneID="TUj-a0-oYT">
             <objects>
                 <viewController id="1fE-Zu-VeN" customClass="MoviesGridViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="isj-0N-guq">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="hCv-3P-r2k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dRP-2c-2io">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5qo-6h-kws">
-                                    <size key="itemSize" width="256" height="256"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionCell" id="t0E-qf-FBn" customClass="MovieCollectionCell">
-                                        <rect key="frame" x="57" y="0.0" width="300" height="128"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Rdk-XG-Svj">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pye-2F-L6O">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="300" height="128"/>
-                                        <connections>
-                                            <outlet property="posterView" destination="pye-2F-L6O" id="VTP-hr-5qy"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Dls-Or-4NJ"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ipY-5o-MJt">
+                            <size key="itemSize" width="197" height="231"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionCell" id="gQV-LX-EEg" customClass="MovieCollectionCell">
+                                <rect key="frame" x="0.0" y="0.0" width="197" height="231"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZQX-3f-JD1">
+                                    <rect key="frame" x="0.0" y="0.0" width="197" height="231"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v1J-zF-ffg">
+                                            <rect key="frame" x="0.0" y="0.0" width="197" height="231"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </collectionViewCellContentView>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <size key="customSize" width="197" height="231"/>
+                                <connections>
+                                    <outlet property="posterView" destination="v1J-zF-ffg" id="oGr-DI-2TA"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                    </collectionView>
                     <navigationItem key="navigationItem" id="quY-Tb-RIh"/>
                     <connections>
-                        <outlet property="collectionView" destination="dRP-2c-2io" id="ULX-kf-I0a"/>
+                        <outlet property="collectionView" destination="hCv-3P-r2k" id="0ta-YL-fdp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7NA-cp-kV4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -241,6 +234,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="now_playing_tabbar_item" width="21" height="21"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
