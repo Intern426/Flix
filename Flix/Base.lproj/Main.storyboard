@@ -170,11 +170,11 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="130.58035714285714"/>
         </scene>
-        <!--Item-->
+        <!--Anime-->
         <scene sceneID="xlV-YX-xak">
             <objects>
                 <navigationController id="RBD-FD-LTt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="nfp-Ck-TMF"/>
+                    <tabBarItem key="tabBarItem" title="Anime" image="projector_tabbar_item" id="nfp-Ck-TMF"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9mb-fw-VjH">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -235,6 +235,7 @@
     </scenes>
     <resources>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
+        <image name="projector_tabbar_item" width="21" height="25"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
