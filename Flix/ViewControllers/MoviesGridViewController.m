@@ -13,6 +13,7 @@
 @interface MoviesGridViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation MoviesGridViewController
@@ -24,6 +25,13 @@
     self.collectionView.delegate = self;
 
     [self fetchMovies];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged]; //Deprecated and only used for older objects
+    // So do it on self, call the method, and then update interface as needed
+    [self.collectionView insertSubview:self.refreshControl atIndex:0]; // controls where you put it in the view hierarchy
+    
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     
     layout.minimumInteritemSpacing = 5;
@@ -63,7 +71,7 @@
                self.movies = dataDictionary[@"results"];
                [self.collectionView reloadData];
            }
-        
+        [self.refreshControl endRefreshing];
        }];
     [task resume];
 }
