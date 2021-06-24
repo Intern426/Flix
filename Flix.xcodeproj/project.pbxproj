@@ -18,6 +18,8 @@
 		DE5582DF26838DED0066D5D9 /* FlixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5582DE26838DED0066D5D9 /* FlixTests.m */; };
 		DE5582EA26838DED0066D5D9 /* FlixUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5582E926838DED0066D5D9 /* FlixUITests.m */; };
 		DE5582FB26839ECC0066D5D9 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5582FA26839ECC0066D5D9 /* MoviesViewController.m */; };
+		DE66FB652684F24000FAA3AF /* MoviesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE66FB642684F24000FAA3AF /* MoviesGridViewController.m */; };
+		DE66FB682684F40E00FAA3AF /* MovieCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE66FB672684F40E00FAA3AF /* MovieCollectionCell.m */; };
 		DEFCCC612683C4610095E9A5 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFCCC602683C4610095E9A5 /* MovieCell.m */; };
 		DEFCCC642683DE090095E9A5 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFCCC632683DE090095E9A5 /* DetailsViewController.m */; };
 		FA44E6D0E15F77FD80364D5E /* Pods_Flix_FlixUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A2876B4CABCF864BFAC842 /* Pods_Flix_FlixUITests.framework */; };
@@ -65,6 +67,10 @@
 		DE5582EB26838DED0066D5D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE5582F926839ECC0066D5D9 /* MoviesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
 		DE5582FA26839ECC0066D5D9 /* MoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
+		DE66FB632684F24000FAA3AF /* MoviesGridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesGridViewController.h; sourceTree = "<group>"; };
+		DE66FB642684F24000FAA3AF /* MoviesGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesGridViewController.m; sourceTree = "<group>"; };
+		DE66FB662684F40E00FAA3AF /* MovieCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCollectionCell.h; sourceTree = "<group>"; };
+		DE66FB672684F40E00FAA3AF /* MovieCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionCell.m; sourceTree = "<group>"; };
 		DEFCCC5F2683C4610095E9A5 /* MovieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
 		DEFCCC602683C4610095E9A5 /* MovieCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 		DEFCCC622683DE090095E9A5 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
@@ -181,6 +187,8 @@
 				DE5582FA26839ECC0066D5D9 /* MoviesViewController.m */,
 				DEFCCC622683DE090095E9A5 /* DetailsViewController.h */,
 				DEFCCC632683DE090095E9A5 /* DetailsViewController.m */,
+				DE66FB632684F24000FAA3AF /* MoviesGridViewController.h */,
+				DE66FB642684F24000FAA3AF /* MoviesGridViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -197,6 +205,8 @@
 			children = (
 				DEFCCC5F2683C4610095E9A5 /* MovieCell.h */,
 				DEFCCC602683C4610095E9A5 /* MovieCell.m */,
+				DE66FB672684F40E00FAA3AF /* MovieCollectionCell.m */,
+				DE66FB662684F40E00FAA3AF /* MovieCollectionCell.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -452,8 +462,10 @@
 				DEFCCC612683C4610095E9A5 /* MovieCell.m in Sources */,
 				DE5582FB26839ECC0066D5D9 /* MoviesViewController.m in Sources */,
 				DEFCCC642683DE090095E9A5 /* DetailsViewController.m in Sources */,
+				DE66FB682684F40E00FAA3AF /* MovieCollectionCell.m in Sources */,
 				DE5582D526838DED0066D5D9 /* main.m in Sources */,
 				DE5582C726838DEC0066D5D9 /* SceneDelegate.m in Sources */,
+				DE66FB652684F24000FAA3AF /* MoviesGridViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
