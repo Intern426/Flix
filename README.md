@@ -44,7 +44,7 @@ Here's a walkthrough of implemented user stories:
 
 
 
-![](https://i.imgur.com/KHu26S2.gif)
+![](https://i.imgur.com/6a0Ko60.gif)
 
 
 
