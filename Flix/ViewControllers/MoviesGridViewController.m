@@ -7,6 +7,7 @@
 
 #import "MoviesGridViewController.h"
 #import "MovieCollectionCell.h"
+#import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface MoviesGridViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -25,7 +26,7 @@
     [self fetchMovies];
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     
-    layout.minimumInteritemSpacing = 0;
+    layout.minimumInteritemSpacing = 5;
     layout.minimumLineSpacing = 0;
     
     CGFloat postersPerLine = 2;
@@ -77,7 +78,7 @@
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString]; // checks to make sure it's a valid URL
     
     cell.posterView.image = nil;
-    
+
     [cell.posterView setImageWithURL:posterURL];
     return cell;
     
@@ -89,14 +90,24 @@
 
 
 
-/*
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
+     UICollectionViewCell *tappedCell = sender;
+     
+     NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
+     NSDictionary *movie = self.movies[indexPath.row];
+     
+     DetailsViewController *detailsViewController = [segue destinationViewController];
+     detailsViewController.movie = movie;
+     
+     
+     NSLog(@"Tapping on a movie!");
+     
  }
- */
+ 
 
 @end
