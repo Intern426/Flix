@@ -10,11 +10,16 @@
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *movies;
+@property (strong, nonatomic) NSArray *filteredMovies;
+@property (assign, nonatomic) BOOL filter;
+
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingActivityView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @end
 
 @implementation MoviesViewController
@@ -24,10 +29,12 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+    self.searchBar.delegate = self;
+    self.filter = NO;
     
     
     [self fetchMovies];
+    self.filteredMovies = self.movies;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     
@@ -38,6 +45,7 @@
     //[self.tableView addSubview:self.refreshControl]; //add Subview is part of UIView
                                                      // programmatically create views and nest using addSubview
 }
+
 
 -(void)fetchMovies {
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
@@ -80,33 +88,63 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (self.filter)
+        return self.filteredMovies.count;
     return self.movies.count;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-  //  UITableViewCell *cell = [[UITableViewCell alloc] init]; //Doesn't have default constructor
-    
+        
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
-    
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie;
+    if (self.filter) {
+     movie = self.filteredMovies[indexPath.row];
+    } else {
+        movie = self.movies[indexPath.row];
+    }
     
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
     
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     
+    NSString *backdropUrlString = movie[@"backdrop_path"];
+    NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropUrlString];
+    NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString]; // checks to make sure it's a valid URL
+    
+    
     NSString *posterUrlString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterUrlString];
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString]; // checks to make sure it's a valid URL
     
     cell.posterView.image = nil;
+    cell.backdropView.image = nil;
     
     [cell.posterView setImageWithURL:posterURL];
-    
-    //cell.textLabel.text = [NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section];
-    
+    [cell.backdropView setImageWithURL:backdropURL];
+        
     return cell;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if (searchText.length != 0) {
+        self.searchBar.showsCancelButton = true;
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject[@"title"] containsString:searchText];
+        }];
+        self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
+        self.filter = YES;
+    } else {
+        self.searchBar.showsCancelButton = false;
+        self.filter = NO;
+    }
+    [self.tableView reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
 }
 
 
@@ -124,10 +162,6 @@
     DetailsViewController *detailsViewController = [segue destinationViewController];
     
     detailsViewController.movie = movie;
-    
-    
-    NSLog(@"Tapping on a movie!");
-    
 }
 
 
