@@ -20,6 +20,7 @@
 		DE5582FB26839ECC0066D5D9 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5582FA26839ECC0066D5D9 /* MoviesViewController.m */; };
 		DE66FB652684F24000FAA3AF /* MoviesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE66FB642684F24000FAA3AF /* MoviesGridViewController.m */; };
 		DE66FB682684F40E00FAA3AF /* MovieCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE66FB672684F40E00FAA3AF /* MovieCollectionCell.m */; };
+		DEDF84DE2686946000CAB96A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDF84DC2686946000CAB96A /* Reachability.m */; };
 		DEFCCC612683C4610095E9A5 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFCCC602683C4610095E9A5 /* MovieCell.m */; };
 		DEFCCC642683DE090095E9A5 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFCCC632683DE090095E9A5 /* DetailsViewController.m */; };
 		FA44E6D0E15F77FD80364D5E /* Pods_Flix_FlixUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A2876B4CABCF864BFAC842 /* Pods_Flix_FlixUITests.framework */; };
@@ -71,6 +72,8 @@
 		DE66FB642684F24000FAA3AF /* MoviesGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesGridViewController.m; sourceTree = "<group>"; };
 		DE66FB662684F40E00FAA3AF /* MovieCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCollectionCell.h; sourceTree = "<group>"; };
 		DE66FB672684F40E00FAA3AF /* MovieCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionCell.m; sourceTree = "<group>"; };
+		DEDF84DC2686946000CAB96A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../../../../Downloads/Reachability/Reachability/Reachability.m; sourceTree = "<group>"; };
+		DEDF84DD2686946000CAB96A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../../../../Downloads/Reachability/Reachability/Reachability.h; sourceTree = "<group>"; };
 		DEFCCC5F2683C4610095E9A5 /* MovieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
 		DEFCCC602683C4610095E9A5 /* MovieCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 		DEFCCC622683DE090095E9A5 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 				DE5582C326838DEC0066D5D9 /* AppDelegate.m */,
 				DE5582C526838DEC0066D5D9 /* SceneDelegate.h */,
 				DE5582C626838DEC0066D5D9 /* SceneDelegate.m */,
+				DEDF84DD2686946000CAB96A /* Reachability.h */,
+				DEDF84DC2686946000CAB96A /* Reachability.m */,
 				DE5582CB26838DEC0066D5D9 /* Main.storyboard */,
 				DE5582CE26838DED0066D5D9 /* Assets.xcassets */,
 				DE5582D026838DED0066D5D9 /* LaunchScreen.storyboard */,
@@ -461,6 +466,7 @@
 				DE5582C426838DEC0066D5D9 /* AppDelegate.m in Sources */,
 				DEFCCC612683C4610095E9A5 /* MovieCell.m in Sources */,
 				DE5582FB26839ECC0066D5D9 /* MoviesViewController.m in Sources */,
+				DEDF84DE2686946000CAB96A /* Reachability.m in Sources */,
 				DEFCCC642683DE090095E9A5 /* DetailsViewController.m in Sources */,
 				DE66FB682684F40E00FAA3AF /* MovieCollectionCell.m in Sources */,
 				DE5582D526838DED0066D5D9 /* main.m in Sources */,

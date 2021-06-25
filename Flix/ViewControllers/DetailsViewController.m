@@ -12,8 +12,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backdropView;
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *releaseDateLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
-
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @end
 
 @implementation DetailsViewController
@@ -21,14 +23,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view.
+    [self setupImages];
+    
+    self.navigationBar.title = self.movie[@"title"];
+    self.titleLabel.text = self.movie[@"title"];
+    self.synopsisLabel.text = self.movie[@"overview"];
+
+    [self.titleLabel sizeToFit];
+    [self.synopsisLabel sizeToFit];
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    self.scrollView.contentSize = CGSizeMake(screenWidth, screenHeight);
+}
+
+-(void) setupImages{
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     
     NSString *backdropUrlString = self.movie[@"backdrop_path"];
     NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropUrlString];
     NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString]; // checks to make sure it's a valid URL
-    
-    
     
     NSString *posterUrlString = self.movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterUrlString];
@@ -37,11 +53,6 @@
     [self.backdropView setImageWithURL:backdropURL];
     [self.posterView setImageWithURL:posterURL];
     
-    self.titleLabel.text = self.movie[@"title"];
-    self.synopsisLabel.text = self.movie[@"overview"];
-
-    [self.titleLabel sizeToFit];
-    [self.synopsisLabel sizeToFit];
 }
 
 /*

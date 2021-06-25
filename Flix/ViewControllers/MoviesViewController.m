@@ -9,12 +9,12 @@
 #import "MovieCell.h"
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "Reachability.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *movies;
 @property (strong, nonatomic) NSArray *filteredMovies;
 @property (assign, nonatomic) BOOL filter;
-
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -41,9 +41,7 @@
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged]; //Deprecated and only used for older objects
     // So do it on self, call the method, and then update interface as needed
     [self.tableView insertSubview:self.refreshControl atIndex:0]; // controls where you put it in the view hierarchy
-    
-    //[self.tableView addSubview:self.refreshControl]; //add Subview is part of UIView
-                                                     // programmatically create views and nest using addSubview
+
 }
 
 
@@ -55,19 +53,37 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
            if (error != nil) {
                NSLog(@"%@", [error localizedDescription]);
-               UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot get movies"
-                                                                              message:@"There seems to be no internet connection"
-                                                                                                                  preferredStyle:(UIAlertControllerStyleAlert)];
-               UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"
-                                                style:UIAlertActionStyleDefault
-                                                handler:^(UIAlertAction * _Nonnull action) {
-                   [self fetchMovies];
-                }];
-               [alert addAction:tryAgainAction];
-               
-               [self presentViewController:alert animated:YES completion:^{
-                   // optional code for what happens after the alert controller has finished presenting
-               }];
+               Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+               NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+               if (networkStatus == NotReachable) {
+                   UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot get movies"
+                                                                                  message:@"There seems to be no internet connection"
+                                                                                                                      preferredStyle:(UIAlertControllerStyleAlert)];
+                   UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"
+                                                    style:UIAlertActionStyleDefault
+                                                    handler:^(UIAlertAction * _Nonnull action) {
+                       [self fetchMovies];
+                    }];
+                   [alert addAction:tryAgainAction];
+                   
+                   [self presentViewController:alert animated:YES completion:^{
+                       // optional code for what happens after the alert controller has finished presenting
+                   }];
+               } else {
+                   UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot get movies"
+                                                                                  message:@"Please check back later."
+                                                                           preferredStyle:(UIAlertControllerStyleAlert)];
+                   UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"
+                                                                            style:UIAlertActionStyleDefault
+                                                                          handler:^(UIAlertAction * _Nonnull action) {
+                       [self fetchMovies];
+                   }];
+                   [alert addAction:tryAgainAction];
+                   
+                   [self presentViewController:alert animated:YES completion:^{
+                       // optional code for what happens after the alert controller has finished presenting
+                   }];
+               }
            }
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
