@@ -138,6 +138,7 @@
     cell.posterView.image = nil;
     
     [cell.posterView setImageWithURL:posterURL];
+    
     [cell.loadingActivity stopAnimating];
     return cell;
 }

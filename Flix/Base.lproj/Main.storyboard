@@ -55,10 +55,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="U4e-Jy-u7s">
-                                                    <rect key="frame" x="184" y="112.66666603088379" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </activityIndicatorView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol2-IQ-CHa">
                                                     <rect key="frame" x="171" y="12" width="203" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -70,7 +66,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="backdropView" destination="ycw-dx-fZp" id="snx-ML-gPe"/>
-                                            <outlet property="loadingActivity" destination="U4e-Jy-u7s" id="tuC-SQ-b40"/>
                                             <outlet property="posterView" destination="nxB-OW-nWl" id="UvH-7s-oNu"/>
                                             <outlet property="synopsisLabel" destination="96e-Mh-QIZ" id="bz4-2X-0Oh"/>
                                             <outlet property="titleLabel" destination="ol2-IQ-CHa" id="ITB-LV-Dlz"/>
@@ -241,15 +236,16 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="179" height="198"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" id="1oc-ag-i0b">
-                                                    <rect key="frame" x="79" y="89" width="20" height="20"/>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="1oc-ag-i0b">
+                                                    <rect key="frame" x="71" y="80" width="37" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" name="AccentColor"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="179" height="198"/>
                                         <connections>
-                                            <outlet property="loadingActivity" destination="1oc-ag-i0b" id="jcx-cn-jac"/>
+                                            <outlet property="loadingActivity" destination="1oc-ag-i0b" id="hZM-0x-SQy"/>
                                             <outlet property="posterView" destination="mD4-DQ-yaU" id="h0d-BH-3gA"/>
                                             <segue destination="yze-Se-FuQ" kind="show" id="6xM-dE-Nnv"/>
                                         </connections>
