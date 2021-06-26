@@ -19,7 +19,7 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 
 - [x] User can tap a poster in the collection view to see a detail screen of that movie
-- [ ] User can search for a movie.
+- [x] User can search for a movie.
 - [ ] All images fade in as they are loading.
 - [ ] User can view the large movie poster by tapping on a cell.
 - [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
@@ -35,16 +35,16 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. When we were making out table views, I wasn't entirely sure what the purpose of the delegates was
-2. Would layouts have been better a way of designing the Collection View instead of just adjusting the values in the ViewController class? 
+1. When we were setting up the collection view cells, we programatically set the width and height there. Is size/design management usually done when creating layouts? Would having a layout been easier? 
+2. It would be nice to discuss other causes of errors and what messages to relay the user with - since right now it's only set to respond (specifically at least) to network errors, however anything else would only get a "Please try again later" message.
+
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
 
-
-![https://i.imgur.com/KHu26S2.gif](https://i.imgur.com/KHu26S2.gif)
+![](https://i.imgur.com/H7Dnc1U.gif)
 
 
 
@@ -54,10 +54,11 @@ GIF created with [Kap](https://getkap.co/).
 
 Describe any challenges encountered while building the app.
 
-Resizing the image was a challenge because certain images were too big and kept getting cropped off.
+Deciding how to display the image was tricky and when I was trying to place one image in front of the other with different transparencies, the background image either overlayed the poster or the poster view kept fading. 
 
- I accidently created the wrong outlet or  forgot to connect the outlets a couple times, causing bugs that weren't always obvious until you run the app or the error message didn't make much sense since it doesn't necessarily tell you that the outlet is mismatched. 
+Since we had a lot more objects on the storyboard, it was much easier to to accidently create the wrong outlet or  forgot to connect the outlets. This caused bugs that weren't always obvious until you run the app or resulted in vague error message were slightly challenging to parse through.
 
+Trying to get the search bar on the Collection View via the header was also difficult to accomplish, so instead I had to shrink the Collection View and place the search bar atop which results with a search bar that follows the screen.
 ## Credits
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
