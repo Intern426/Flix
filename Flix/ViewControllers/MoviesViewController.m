@@ -14,7 +14,6 @@
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *movies;
 @property (strong, nonatomic) NSArray *filteredMovies;
-@property (assign, nonatomic) BOOL filter;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -30,7 +29,6 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
-    self.filter = NO;
     
     
     [self fetchMovies];
@@ -91,6 +89,7 @@
                NSLog(@"%@", dataDictionary);
               // [NSThread sleepForTimeInterval:5]; // One way to mock slower Internet connections
                self.movies = dataDictionary[@"results"];
+               self.filteredMovies = self.movies;
                for (NSDictionary *movie in self.movies) {
                    NSLog(@"%@", movie[@"title"]);
                }
@@ -104,20 +103,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (self.filter)
         return self.filteredMovies.count;
-    return self.movies.count;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
         
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     NSDictionary *movie;
-    if (self.filter) {
      movie = self.filteredMovies[indexPath.row];
-    } else {
-        movie = self.movies[indexPath.row];
-    }
     
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
@@ -138,6 +131,7 @@
     
     [cell.posterView setImageWithURL:posterURL];
     [cell.backdropView setImageWithURL:backdropURL];
+    [cell.loadingActivity stopAnimating];
         
     return cell;
 }
@@ -149,10 +143,9 @@
             return [evaluatedObject[@"title"] containsString:searchText];
         }];
         self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
-        self.filter = YES;
     } else {
         self.searchBar.showsCancelButton = false;
-        self.filter = NO;
+        self.filteredMovies = self.movies;
     }
     [self.tableView reloadData];
 }
@@ -161,6 +154,8 @@
     self.searchBar.showsCancelButton = NO;
     self.searchBar.text = @"";
     [self.searchBar resignFirstResponder];
+    self.filteredMovies = self.movies;
+    [self.tableView reloadData];
 }
 
 
@@ -173,12 +168,10 @@
     UITableViewCell *tappedCell = sender;
     
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filteredMovies[indexPath.row];
     
     DetailsViewController *detailsViewController = [segue destinationViewController];
     
     detailsViewController.movie = movie;
 }
-
-
 @end
