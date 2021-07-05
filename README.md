@@ -45,8 +45,8 @@ Here's a walkthrough of implemented user stories:
 
 
 ![](https://i.imgur.com/H7Dnc1U.gif)
+![](https://i.imgur.com/8gWQILV.gif)
 ![](https://i.imgur.com/ZMkZ90H.gif)
-
 
 
 GIF created with [Kap](https://getkap.co/).
